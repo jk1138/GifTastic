@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gif-Tastic CLICK ME</title>
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -13,60 +14,44 @@
 </head>
 
 <body>
+<div class = "container"> 
+  <div class="jumbotron">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <a href="https://jk1138.github.io/TriviaGame/"> <img src="assets/images/logo.jpeg" class="img-fluid text-center" id="main-logo" alt="show logo" width= 650px height= 200px> </a>
-          <h1 class="display-3">Trivia Game</h1>
-          <hr>
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="col-md-3">
-          <img src="assets/images/family.png" class="img-fluid text-center" id="bob1" alt="Bob's Burgers">
-          <div>
-            <h3 id="timer"></h3>
-          </div>
-        </div>
-  
-        <div class="offset-md-1"></div>
-  
-        <div class="col-md-8">
-          <div id="start-page" class=hide-after-start>
-            <h2>Get ready to play</h2>
-            <p>Alrighttttt!!!! Do you think you're a true fan of Bob's Burgers? Test your fandom skills with this
-               multiple choice trivia game. You have 90 seconds to test your knowledge about the Belchers and their eccentric neighbors/friends! 
-               Good luck and have fun!</p>
-            <div class="btn btn-primary" id="start-button">Start
-            </div>
-          </div>
-  
-        <div class="row">
-          <div class="col-md-12" id="questions-box">
-          </div>
-        </div>
-  
-          <div class="hidden" id="end-page">
-            <h2>Here are your scores:</h2>
-            <p id="correct-answers"></p>
-            <p id="incorrect-answers"></p>
-            <p id="unanswered"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  
+      <h1 class="text-center"> Feel the Emotions <span> click on buttons and activate gifs</span></h1>
+      <hr>
+  </div>  
+
+    <button id="emotion-button">happy</button>
+    <button id="emotion-button">sad</button>
+    <button id="emotion-button">angry</button>
+    <button id="emotion-button">stressed</button>
+    <button id="emotion-button">fear</button>
+    <button id="emotion-button">excited</button>
+    <button id="emotion-button">crying</button>
+    <button id="emotion-button">confused</button>
+    <div id="gifs-appear-here"></div>
+
+    <div class="container" id="users-choice";>
+      <form id="user-input">
+        <label id="directions" for="user-input">Type in emotion</label>
+          <input type="text" class="form-control" id="user-input">
+          <br>
+        </form>
+        <button id= "Search" type="button" class="btn btn-success">Search</button>
+        <br>
+        <div id="athletes"> </div>
+    </div>    
+
     <div class="footer">
       <p>&copy;Copyright</p>
     </div>
-    
+</div>    
   <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
   <!-- Code to the JavaScript File -->
   <script src="app.js"></script>
-  
+
   </body>
   </html>
   
