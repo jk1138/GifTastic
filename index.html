@@ -3,30 +3,70 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Stop: It's Giphy time</title>
+  <title>Gif-Tastic CLICK ME</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <!-- CSS style sheet -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 </head>
 
 <body>
-  <img src="https://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200_s.gif" data-still="https://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200_s.gif" data-animate="https://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200.gif" data-state="still" class="gif">
-  <img src="https://media2.giphy.com/media/8rFQp4kHXJ0gU/200_s.gif" data-still="https://media2.giphy.com/media/8rFQp4kHXJ0gU/200_s.gif" data-animate="https://media2.giphy.com/media/8rFQp4kHXJ0gU/200.gif" data-state="still" class="gif">
-  <img src="https://media3.giphy.com/media/W6LbnBigDe4ZG/200_s.gif" data-still="https://media3.giphy.com/media/W6LbnBigDe4ZG/200_s.gif" data-animate="https://media3.giphy.com/media/W6LbnBigDe4ZG/200.gif" data-state="still" class="gif">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    $(".gif").on("click", function() {
-      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-      var state = $(this).attr("data-state");
-      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-      // Then, set the image's data-state to animate
-      // Else set src to the data-still value
-      if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-state", "animate");
-      } else {
-        $(this).attr("src", $(this).attr("data-still"));
-        $(this).attr("data-state", "still");
-      }
-    });
-  </script>
-</body>
-
-</html>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <a href="https://jk1138.github.io/TriviaGame/"> <img src="assets/images/logo.jpeg" class="img-fluid text-center" id="main-logo" alt="show logo" width= 650px height= 200px> </a>
+          <h1 class="display-3">Trivia Game</h1>
+          <hr>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-3">
+          <img src="assets/images/family.png" class="img-fluid text-center" id="bob1" alt="Bob's Burgers">
+          <div>
+            <h3 id="timer"></h3>
+          </div>
+        </div>
+  
+        <div class="offset-md-1"></div>
+  
+        <div class="col-md-8">
+          <div id="start-page" class=hide-after-start>
+            <h2>Get ready to play</h2>
+            <p>Alrighttttt!!!! Do you think you're a true fan of Bob's Burgers? Test your fandom skills with this
+               multiple choice trivia game. You have 90 seconds to test your knowledge about the Belchers and their eccentric neighbors/friends! 
+               Good luck and have fun!</p>
+            <div class="btn btn-primary" id="start-button">Start
+            </div>
+          </div>
+  
+        <div class="row">
+          <div class="col-md-12" id="questions-box">
+          </div>
+        </div>
+  
+          <div class="hidden" id="end-page">
+            <h2>Here are your scores:</h2>
+            <p id="correct-answers"></p>
+            <p id="incorrect-answers"></p>
+            <p id="unanswered"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer">
+      <p>&copy;Copyright</p>
+    </div>
+    
+  <!-- jQuery JS -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <!-- Code to the JavaScript File -->
+  <script src="app.js"></script>
+  
+  </body>
+  </html>
+  
