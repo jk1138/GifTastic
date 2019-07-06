@@ -1,0 +1,11 @@
+body {
+    background-image: url("../images/background.png");
+    background-repeat: repeat;
+    background-size: 100%;
+    margin: 0 auto; 
+  }
+
+  h1 {
+    margin-bottom: 50px;
+  }
+  
