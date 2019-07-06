@@ -14,13 +14,20 @@
 </head>
 
 <body>
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Code to the JavaScript File -->
+    <script src="app.js"></script>
+
 <div class = "container"> 
   <div class="jumbotron">
     <div class="container">
       <h1 class="text-center"> Feel the Emotions <span> click on buttons and activate gifs</span></h1>
       <hr>
   </div>  
-
+    <br>
+    <!-- //buttons -->
     <button id="emotion-button">happy</button>
     <button id="emotion-button">sad</button>
     <button id="emotion-button">angry</button>
@@ -29,29 +36,24 @@
     <button id="emotion-button">excited</button>
     <button id="emotion-button">crying</button>
     <button id="emotion-button">confused</button>
-    <div id="gifs-appear-here"></div>
+    <br>
 
     <div class="container" id="users-choice";>
-      <form id="user-input">
-        <label id="directions" for="user-input">Type in emotion</label>
-          <input type="text" class="form-control" id="user-input">
+      <form id="search form">
+        <label id="directions">Type in emotion</label>
+          <input type="text" class="form-control" id="additional-input">
           <br>
-        </form>
-        <button id= "Search" type="button" class="btn btn-success">Search</button>
+      </form>
+        <button id= "search-button"  class="btn btn-success">Search</button>
         <br>
-        <div id="athletes"> </div>
-    </div>    
+        <div id="show results"> </div>
+    </div>  
+  </div>    
 
     <div class="footer">
       <p>&copy;Copyright</p>
     </div>
-</div>    
-  <!-- jQuery JS -->
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-  <!-- Code to the JavaScript File -->
-  <script src="app.js"></script>
-
+    
   </body>
   </html>
   
