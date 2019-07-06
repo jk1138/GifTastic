@@ -1,57 +1,85 @@
-// array of topics -----------> emotions <-----------
-var emotionsArray = ["happy", "sad", "angry", "stressed", "fear", "excited", "crying","confused"];
+$(document).ready(function(){
 
-// Don't render page until done
-$(document).ready(function() {
-  for (var i = 0; i < emotionsArray.length; i++) {
-    $("#emotion-buttons").append("<button type='button' onclick='searchGif(\"" + emotionsArray[i] + "\")' class='btn btn-primary' value=' " + emotionsArray[i] + "'> " + emotionsArray[i] + " </button>");
-}
-});
+  var displayedButtons = ["happy", "sad","excited","bored","stressed","crazy"];
 
-function clickMe() {
-var userInput = $('#additional-input').val();
-searchGif(userInput);
-}
+  function displayImg(){
+    $("#display-images").empty();
+    var emotions = $(this).attr("data-name");
+    var limit = 10;
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + emotions + "&limit=" + limit + "&api_key=JAenPKR6CVqXxCY2GvjrhzIYzY4Eq2m8";   
 
-function clickSearch() {
-var userInput = $('#additional-input').val();
+      $.ajax({
+        url: queryURL, 
+        method: "GET"
+      }).done(function(response) {
 
-if (userInput) {
-    $('#emotion-buttons').append("<button type='button' onclick='searchGif(\"" + userInput + "\")' class='btn btn-primary' value=' " + userInput + "'> " + userInput + " </button>");
-}
-}
+      for(var j = 0; j < limit; j++) {    
+        var displayDiv = $("<div>");
+        displayDiv.addClass("holder");
+          
+        var image = $("<img>");
+          image.attr("src", response.data[j].images.original_still.url);
+          image.attr("data-still", response.data[j].images.original_still.url);
+          image.attr("data-animate", response.data[j].images.original.url);
+          image.attr("data-state", "still");
+          image.attr("class", "gif");
+          displayDiv.append(image);
 
-function searchGif(gifName) {
-$.ajax({
-        url: 'https://api.giphy.com/v1/gifs/search?q= ' + gifName + ' &api_key=JAenPKR6CVqXxCY2GvjrhzIYzY4Eq2m8',
-        type: 'GET',
-    })
-    .done(function(response) {
-        displayGif(response);
-    })
-}
+        var rating = response.data[j].rating;
+          console.log(response);
+          var pRating = $("<p>").text("Rating: " + rating);
+          displayDiv.append(pRating)
 
-function displayGif(response) {
-$('#showResults').empty();
-for (var i = 0; i < response.data.length; i++) {
-    var rating = "<div class='ratings'> Rating:  " + (response.data[i].rating) + " </div>";
-    var image = rating + '<img src= " ' + response.data[i].images.fixed_height_still.url +
-        '" data-still=" ' + response.data[i].images.fixed_height_still.url +
-        ' " data-animate=" ' + response.data[i].images.fixed_height.url + '" data-state="still" class="movingImage" style= "width:250px; height:250px">';
+        $("#display-images").append(displayDiv);
+      }
+    });
+  }
 
-    image = '<div class="col-md-4">' + image + "</div>";
-    $('#showResults').append(image);
-}
+  function renderButtons(){ 
 
-$('.movingImage').on('click', function() {
-    var state = $(this).attr('data-state');
-    if (state == 'still') {
-        $(this).attr('src', $(this).attr("data-animate"));
-        $(this).attr('data-state', 'animate');
-    } else {
-        $(this).attr('src', $(this).attr("data-still"));
-        $(this).attr('data-state', 'still');
+    $("#display-buttons").empty();
+
+    for (var i = 0; i < displayedButtons.length; i++){
+
+      var newButton = $("<button>") 
+      newButton.attr("class", "btn btn-default");
+      newButton.attr("id", "input")  
+      newButton.attr("data-name", displayedButtons[i]); 
+      newButton.text(displayedButtons[i]); 
+      $("#display-buttons").append(newButton); 
+    }
+  }
+
+  function imageChangeState() {          
+
+    var state = $(this).attr("data-state");
+    var animateImage = $(this).attr("data-animate");
+    var stillImage = $(this).attr("data-still");
+
+    if(state == "still") {
+      $(this).attr("src", animateImage);
+      $(this).attr("data-state", "animate");
     }
 
+    else if(state == "animate") {
+      $(this).attr("src", stillImage);
+      $(this).attr("data-state", "still");
+    }   
+  }
+
+  $("#submitPress").on("click", function(){
+
+      var input = $("#user-input").val().trim();
+      form.reset();
+      displayedButtons.push(input);
+              
+      renderButtons();
+
+      return false;
+  })
+
+  renderButtons();
+
+  $(document).on("click", "#input", displayImg);
+  $(document).on("click", ".gif", imageChangeState);
 });
-}
